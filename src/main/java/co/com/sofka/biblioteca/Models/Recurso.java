@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Document("Recurso")
 public class Recurso {
+
     @Id
     private String id;
     private String nombre;
@@ -17,8 +18,14 @@ public class Recurso {
     private AreaTematica areaTematica;
     private Tipo tipo;
 
-
     public Recurso() {
+    }
+
+    public Recurso(String id, String nombre, AreaTematica areaTematica, Tipo tipo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.areaTematica = areaTematica;
+        this.tipo = tipo;
     }
 
     public Recurso(String nombre, AreaTematica areaTematica, Tipo tipo) {
@@ -26,7 +33,6 @@ public class Recurso {
         this.areaTematica = areaTematica;
         this.tipo = tipo;
     }
-
 
     public String getId() {
         return id;
