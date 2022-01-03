@@ -29,20 +29,20 @@ class ServicioRecursoTest {
     @Test
     void comprobarDisponibilidad() {
         var recurso = new Recurso(
-                "43567612",
-                "Harry Potter",
+                "15646168",
+                "El señor de los anillos",
                 AreaTematica.FANTASIA,
                 Tipo.LIBRO
         );
 
-        Mockito.when(repositorio.findById("43567612")).thenReturn(java.util.Optional.of(recurso));
+        Mockito.when(repositorio.findById("15646168")).thenReturn(java.util.Optional.of(recurso));
 
-        var resultado = servicio.comprobarDisponibilidad("43567612");
+        var resultado = servicio.comprobarDisponibilidad("15646168");
 
         Assertions.assertEquals(true, resultado.isDisponible());
         Assertions.assertEquals("El recurso esta disponible" , resultado.getMensaje());
 
-        Mockito.verify(repositorio, Mockito.times(1)).findById("43567612");
+        Mockito.verify(repositorio, Mockito.times(1)).findById("15646168");
     }
 
     @Test
@@ -50,27 +50,27 @@ class ServicioRecursoTest {
         RecursoMapper mapper = new RecursoMapper();
 
         var recurso = new Recurso(
-                "43567612",
-                "Harry Potter",
+                "15646168",
+                "El señor de los anillos",
                 AreaTematica.FANTASIA,
                 Tipo.LIBRO
         );
         var recursoRetorno = new Recurso(
-                "43567612",
-                "Harry Potter",
+                "15646168",
+                "El señor de los anillos",
                 AreaTematica.FANTASIA,
                 Tipo.LIBRO
         );
 
-        Mockito.when(repositorio.findById("43567612")).thenReturn(Optional.of(recursoRetorno));
+        Mockito.when(repositorio.findById("15646168")).thenReturn(Optional.of(recursoRetorno));
         Mockito.when(repositorio.save(any())).thenReturn(recursoRetorno);
 
-        var resultado = servicio.prestarUnRecurso("43567612");
+        var resultado = servicio.prestarUnRecurso("15646168");
 
         Assertions.assertEquals(true, resultado.isDisponible());
         Assertions.assertEquals("El recurso esta disponible" , resultado.getMensaje());
 
-        Mockito.verify(repositorio, Mockito.times(1)).findById("43567612");
+        Mockito.verify(repositorio, Mockito.times(1)).findById("15646168");
     }
 
     @Test
@@ -78,34 +78,34 @@ class ServicioRecursoTest {
         RecursoMapper mapper = new RecursoMapper();
 
         var recurso = new Recurso(
-                "43567612",
-                "Harry Potter",
+                "15646168",
+                "El señor de los anillos",
                 AreaTematica.FANTASIA,
                 Tipo.LIBRO
         );
         var recursoRetorno = new Recurso(
-                "43567612",
-                "Harry Potter",
+                "15646168",
+                "El señor de los anillos",
                 AreaTematica.FANTASIA,
                 Tipo.LIBRO
         );
 
-        Mockito.when(repositorio.findById("43567612")).thenReturn(Optional.of(recursoRetorno));
+        Mockito.when(repositorio.findById("15646168")).thenReturn(Optional.of(recursoRetorno));
         Mockito.when(repositorio.save(any())).thenReturn(recursoRetorno);
 
-        var resultado = servicio.devolverUnRecurso("43567612");
+        var resultado = servicio.devolverUnRecurso("15646168");
 
         Assertions.assertEquals(false, resultado.isDisponible());
         Assertions.assertEquals("El recurso no esta prestado" , resultado.getMensaje());
 
-        Mockito.verify(repositorio, Mockito.times(1)).findById("43567612");
+        Mockito.verify(repositorio, Mockito.times(1)).findById("15646168");
     }
 
     @Test
     void encontrarPorArea() {
         var recursos = List.of( new Recurso(
-                "43567612",
-                "Harry Potter",
+                "15646168",
+                "El señor de los anillos",
                 AreaTematica.FANTASIA,
                 Tipo.LIBRO
         ));
@@ -115,7 +115,7 @@ class ServicioRecursoTest {
         var resultado = servicio.encontrarPorAreaTematica("FANTASIA");
 
         Assertions.assertEquals(1, resultado.size());
-        Assertions.assertEquals("Harry Potter" , resultado.get(0).getNombre());
+        Assertions.assertEquals("El señor de los anillos" , resultado.get(0).getNombre());
         Assertions.assertEquals(Tipo.LIBRO , resultado.get(0).getTipo());
         Assertions.assertEquals(AreaTematica.FANTASIA, resultado.get(0).getAreaTematica());
 
@@ -125,8 +125,8 @@ class ServicioRecursoTest {
     @Test
     void encontrarPorTipo() {
         var recursos = List.of( new Recurso(
-                "43567612",
-                "Harry Potter",
+                "15646168",
+                "El señor de los anillos",
                 AreaTematica.FANTASIA,
                 Tipo.LIBRO
         ));
@@ -136,7 +136,7 @@ class ServicioRecursoTest {
         var resultado = servicio.encontrarPorTipo("LIBRO");
 
         Assertions.assertEquals(1, resultado.size());
-        Assertions.assertEquals("Harry Potter" , resultado.get(0).getNombre());
+        Assertions.assertEquals("El señor de los anillos" , resultado.get(0).getNombre());
         Assertions.assertEquals(Tipo.LIBRO , resultado.get(0).getTipo());
         Assertions.assertEquals(AreaTematica.FANTASIA, resultado.get(0).getAreaTematica());
 
@@ -146,8 +146,8 @@ class ServicioRecursoTest {
     @Test
     void encontrarPorAreaTematicaYTipo() {
         var recursos = List.of( new Recurso(
-                "43567612",
-                "Harry Potter",
+                "15646168",
+                "El señor de los anillos",
                 AreaTematica.FANTASIA,
                 Tipo.LIBRO
         ));
@@ -158,7 +158,7 @@ class ServicioRecursoTest {
         var resultado = servicio.encontrarPorAreaTematicaYTipo("FANTASIA", "LIBRO");
 
         Assertions.assertEquals(1, resultado.size());
-        Assertions.assertEquals("Harry Potter" , resultado.get(0).getNombre());
+        Assertions.assertEquals("El señor de los anillos" , resultado.get(0).getNombre());
         Assertions.assertEquals(Tipo.LIBRO , resultado.get(0).getTipo());
         Assertions.assertEquals(AreaTematica.FANTASIA, resultado.get(0).getAreaTematica());
 
